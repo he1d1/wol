@@ -26,7 +26,7 @@ func main() {
 	})
 
 	app.Get("/ping", func(c fiber.Ctx) error {
-		pinger, err := probing.NewPinger("desktop")
+		pinger, err := probing.NewPinger(os.Getenv("WOL-HOST"))
 		if err != nil {
 			return fiber.NewError(fiber.StatusInternalServerError, err.Error())
 		}
