@@ -28,12 +28,12 @@ func main() {
 	app.Get("/ping", func(c fiber.Ctx) error {
 		pinger, err := probing.NewPinger("desktop")
 		if err != nil {
-			panic(err)
+			return fiber.NewError(fiber.StatusInternalServerError, err.Error())
 		}
 		pinger.Count = 3
 		err = pinger.Run() // Blocks until finished.
 		if err != nil {
-			panic(err)
+			return fiber.NewError(fiber.StatusInternalServerError, err.Error())
 		}
 		stats := pinger.Statistics()
 		return c.JSON(stats)
