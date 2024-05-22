@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
 
 	"github.com/gofiber/fiber/v3"
 	probing "github.com/prometheus-community/pro-bing"
